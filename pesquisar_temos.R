@@ -16,22 +16,6 @@ termos <- c("Flavio miliciano",
 
 termos
 
-# Pesquisar termos ----
-
-purrr::walk(
-  termos,
-  \(termo){
-
-    paste0("https://www.google.com/search?q=",
-           utils::URLencode(termo,
-                            reserved = TRUE)) |>
-      utils::browseURL()
-
-    base::Sys.sleep(1)
-
-    },
-  .progress = TRUE)
-
 # Listar navegadores ----
 
 navegadores <- readRegistry(
@@ -63,20 +47,14 @@ purrr::walk(
   termos,
   \(termo){
 
-    purrr::walk(
-      navegadores,
-      \(navs){
+    paste0("https://www.google.com/search?q=",
+           utils::URLencode(termo,
+                            reserved = TRUE)) |>
+      utils::browseURL()
 
-        paste0("https://www.google.com/search?q=",
-               utils::URLencode(termo,
-                                reserved = TRUE)) |>
-          utils::browseURL()
+    base::Sys.sleep(1)
 
-        base::Sys.sleep(1)
-
-        })
-
-    },
+  },
   .progress = TRUE)
 
 # Fazer as pesquisas em mais de um navegador ----
