@@ -22,6 +22,12 @@ calc_ggmagnify <- function(x0,
 
       altura <- largura * (origem[["ymax"]] - origem[["ymin"]]) / (origem[["xmax"]] - origem[["xmin"]])
 
+      if(corrigir_lat){
+
+        altura <- altura / cos(mean(origem[c("ymin", "ymax")]) * pi / 180)^2
+
+      }
+
       c(xmin = x0,
         xmax = x0 + largura,
         ymin = y0 - altura,
