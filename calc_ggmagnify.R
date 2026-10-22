@@ -17,7 +17,6 @@ calc_ggmagnify <- function(x0,
          list(origem)),
     \(x0,
       y0,
-      largura,
       origem){
 
       largura <- (origem[["xmax"]] - origem[["xmin"]]) * fator
