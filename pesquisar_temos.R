@@ -1,4 +1,4 @@
-# PAcotes ----
+# Pacotes ----
 
 install.packages("purrr")
 
@@ -39,7 +39,7 @@ navegadores <- readRegistry(
       }) |>
   stringr::str_remove_all('"')
 
-navegadores
+
 
 # Fazer as pesquisas ----
 
