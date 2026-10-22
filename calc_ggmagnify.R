@@ -2,7 +2,8 @@ calc_ggmagnify <- function(x0,
                            y0,
                            largura,
                            origem,
-                           id = NULL){
+                           id = NULL,
+                           corrigir_lat = FALSE){
 
   if(require("purrr")){
 
