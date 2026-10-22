@@ -31,7 +31,6 @@ calc_ggmagnify <- function(x0,
 
     },
     .progress = TRUE) |>
-    purrr::pluck(1) |>
     setNames(id)
 
   return(final)
