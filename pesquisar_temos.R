@@ -52,7 +52,7 @@ purrr::walk(
                             reserved = TRUE)) |>
       utils::browseURL()
 
-    base::Sys.sleep(1)
+    base::Sys.sleep(5)
 
   },
   .progress = TRUE)
