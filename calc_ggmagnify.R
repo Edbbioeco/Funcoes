@@ -2,8 +2,7 @@ calc_ggmagnify <- function(x0,
                            y0,
                            origem,
                            fator,
-                           id = NULL,
-                           corrigir_lat = FALSE){
+                           id = NULL){
 
   if(require("purrr")){
 
@@ -14,10 +13,12 @@ calc_ggmagnify <- function(x0,
   final <- purrr::pmap(
     list(x0,
          y0,
-         list(origem)),
+         list(origem),
+        fator),
     \(x0,
       y0,
-      origem){
+      origem,
+     fator){
 
       largura <- (origem[["xmax"]] - origem[["xmin"]]) * fator
 
