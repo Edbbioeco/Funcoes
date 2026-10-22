@@ -1,7 +1,7 @@
 calc_ggmagnify <- function(x0,
                            y0,
-                           largura,
                            origem,
+                           fator,
                            id = NULL,
                            corrigir_lat = FALSE){
 
@@ -14,20 +14,15 @@ calc_ggmagnify <- function(x0,
   final <- purrr::pmap(
     list(x0,
          y0,
-         largura,
          list(origem)),
     \(x0,
       y0,
       largura,
       origem){
 
-      altura <- largura * (origem[["ymax"]] - origem[["ymin"]]) / (origem[["xmax"]] - origem[["xmin"]])
+      largura <- (origem[["xmax"]] - origem[["xmin"]]) * fator
 
-      if(corrigir_lat){
-
-        altura <- altura / cos(mean(origem[c("ymin", "ymax")]) * pi / 180)^2
-
-      }
+      altura <- (origem[["ymax"]] - origem[["ymin"]]) * fator
 
       c(xmin = x0,
         xmax = x0 + largura,
@@ -36,6 +31,7 @@ calc_ggmagnify <- function(x0,
 
     },
     .progress = TRUE) |>
+    purrr::pluck(1) |>
     setNames(id)
 
   return(final)
